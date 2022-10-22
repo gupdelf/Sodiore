@@ -1,4 +1,4 @@
-using api.models;
+using api.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace api.Data
@@ -10,15 +10,8 @@ namespace api.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
         }
-
-        /*protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
-            // connect to mysql with connection string from app settings
-            
-        }*/     
-
         // especifica quais modelos vão utilizar funções do EF
         
-        public DbSet<Pizza>? Pizzas {get; set;}
+        public DbSet<Pizza> Pizzas {get; set;}
     }
 }
