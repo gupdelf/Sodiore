@@ -3,17 +3,24 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api
 {    
-    public class Startup : IStartup
+    
+    public class Startup : IStartup // extrai a interface criada "IStartup"
     {
-
+        // construtor de nome Startup para setar as configurações de inicialização contidas 
+        // na interface IConfiguration (Microsoft.Extensions)
+        // a propriedade Configuration estava apenas como get, então foi preciso setar ela dentro do construtor
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
+        // declara que vai pegar as propriedades da interface IConfiguration
+        // e passar para "Configuration"
         public IConfiguration Configuration { get; }
 
+        // configura as services
         public void ConfigureServices(IServiceCollection services)
         {
+            // adiciona as controllers ao esquema do app
             services.AddControllers();
 
             // db connection
@@ -26,7 +33,7 @@ namespace api
 
         public void Configure(WebApplication app, IWebHostEnvironment environment)
         {
-            // Configure the HTTP request pipeline.
+            // Configures the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -44,7 +51,6 @@ namespace api
     public interface IStartup
     {
         IConfiguration Configuration { get; }
-
         void Configure(WebApplication app, IWebHostEnvironment environment);
         void ConfigureServices(IServiceCollection services);
     }
