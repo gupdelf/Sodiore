@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace SodioreAPI.models
+namespace api.models
 {
     // defines columns
     /*  Id
